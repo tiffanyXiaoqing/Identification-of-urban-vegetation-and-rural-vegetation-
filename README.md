@@ -7,4 +7,4 @@ Then, you can try the code in src. Download package `Opencv` and `GDAL` before r
 ## More information about how to realize it
 If you are familar with English, you can refer to the `Mathematical principle and explaination file`. For Chinese, you can refer to `城市和乡村绿地的判别原理` file.
 ## Ahaaa
-Please threw a start if you feel useful.
+Please throw a start if you feel useful.
