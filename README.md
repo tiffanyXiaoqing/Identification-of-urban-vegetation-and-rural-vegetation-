@@ -16,7 +16,7 @@ According to this basic principle, I divide the implementation of this project i
 
 ## 2.影像的预处理 Image preprocessing
 原始图像的每个像素点都有255个信息位，直接使用会加大分类难度。为了有效提取城市植被和乡村植被的信息，利用ERDAS软件的监督学习方法将图像信息划分为植被、房屋建筑、裸地（包括道路）， 阴影（包括无法识别的区域）四大类。<br />
-在预处理后的图片中，植被为绿色，房屋建筑为白色，裸地为黄色，阴影为黑色。
+在预处理后的图片中，植被为绿色，房屋建筑为白色，裸地为黄色，阴影为黑色。<br />
 <img src="https://github.com/tiffanyXiaoqing/Identification-of-urban-vegetation-and-rural-vegetation-/blob/master/images/%E5%8E%9F%E5%A7%8B%E5%9B%BE%E7%89%87.jpg" width = "300" height = "200" alt="原始图片" align=center />  <img src="https://github.com/tiffanyXiaoqing/Identification-of-urban-vegetation-and-rural-vegetation-/blob/master/images/%E9%A2%84%E5%A4%84%E7%90%86%E5%90%8E.PNG" width = "300" height = "200" alt="预处理后图片" align=center />
 <br />
 
@@ -34,7 +34,7 @@ FloodFill算法的模拟过程如下所示<br />
 ## 5.代码的优化 Code optimization
 ### 5.1回溯算法实现FloodFill算法 Comabining FloodFill algorithm with backtracking 
 因为每个坐标都要搜索上下左右，被重复搜索时，必须保证递归函数能够能正确地退出，否则就会陷入死循环。
-例如下图坐标（0，0）往后搜索时，坐标（0，1）往左搜索就会重复。
+例如下图坐标（0，0）往后搜索时，坐标（0，1）往左搜索就会重复。<br />
 <img src="https://github.com/tiffanyXiaoqing/Identification-of-urban-vegetation-and-rural-vegetation-/blob/master/images/backtracking.jpg" width = "300" height = "200" alt="BeforeFloodFill" align=center />  <img src="https://github.com/tiffanyXiaoqing/Identification-of-urban-vegetation-and-rural-vegetation-/blob/master/images/AfterFloodFill.jpg" width = "300" height = "200" alt="backtracking" align=center />
 <br />
 为了防止陷入死循环，可以设计一个额外数组记录遍历过的位置。为了进一步节省空间，设计使用回溯算法，搜索过的地方设为-1，搜索完之后再填充。
