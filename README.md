@@ -28,9 +28,17 @@ According to this basic principle, I divide the implementation of this project i
 ## 4.基于FloodFill算法的分类划分 FloodFill algorithm
 预处理后的图像被分成四类，给出了植被周围的地理位置信息，城市密度模型给出植被位于城市中的可能性。如果某点植被像素的在城市密度模型的值大，并且被住房和道路包围，则认定其为城市植被。
 判断植被区域是否被住房和道路包围依靠FloodFill算法来实现。FloodFill算法即填充算法，在此项目里实现为当点A更有可能是城市植被类的点时，填充为16，并递归填充其上下左右的点。如果植被填充区域数量小于阈值，则认为植被区域被住房和道路包围。反之，如果植被填充区域数量大于阈值，则将这个区域认定为乡村植被区域。
-
-
+FloodFill算法的模拟过程如下所示<br />
+<img src="https://github.com/tiffanyXiaoqing/Identification-of-urban-vegetation-and-rural-vegetation-/blob/master/images/BeforeFloodFill.jpg" width = "300" height = "200" alt="BeforeFloodFill" align=center />  <img src="https://github.com/tiffanyXiaoqing/Identification-of-urban-vegetation-and-rural-vegetation-/blob/master/images/AfterFloodFill.jpg" width = "300" height = "200" alt="AfterFloodFill" align=center />
+<br />
+## 5.代码的优化 Code optimization
+### 5.1回溯算法实现FloodFill算法 Comabining FloodFill algorithm with backtracking 
+因为每个坐标都要搜索上下左右，被重复搜索时，必须保证递归函数能够能正确地退出，否则就会陷入死循环。
+例如下图坐标（0，0）往后搜索时，坐标（0，1）往左搜索就会重复。
+为了防止陷入死循环，可以设计一个额外数组记录遍历过的位置。为了进一步节省空间，设计使用回溯算法，搜索过的地方设为-1，搜索完之后再填充。
+### 5.2多线程并行运行 Multithreading
+高分辨率的遥感图像往往有几百兆的大小，比如项目中测试的图片像素大小为8206x6078，142MB，逐个点遍历的速度非常慢。
+基于FloodFill算法的分类划分这一步骤仅和地理信息位置和城市密度模型有关，自身对某一像素点的结果不影像其他像素点。
+因此，FloodFill算法实现中，可以通过把图片分成多个部分，分别计算来实现加速。
 ## More information about how to realize it
 If you are familar with English, you can refer to the `Mathematical principle and explaination file`. For Chinese, you can refer to `城市和乡村绿地的判别原理` file.
-## Ahaaa
-Please throw a start if you feel useful.
