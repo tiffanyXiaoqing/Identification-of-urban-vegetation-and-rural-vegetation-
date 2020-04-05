@@ -44,3 +44,5 @@ FloodFill算法的模拟过程如下所示<br />
 因此，FloodFill算法实现中，可以通过把图片分成多个部分，分别计算来实现加速。
 ## More information about how to realize it
 If you are familar with English, you can refer to the `Mathematical principle and explaination file`. For Chinese, you can refer to `城市和乡村绿地的判别原理` file.
+## 参考
+[mriiiron-urban-rural-vegetation](https://github.com/mriiiron/urban-rural-vegetation).
