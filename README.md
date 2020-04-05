@@ -35,6 +35,8 @@ FloodFill算法的模拟过程如下所示<br />
 ### 5.1回溯算法实现FloodFill算法 Comabining FloodFill algorithm with backtracking 
 因为每个坐标都要搜索上下左右，被重复搜索时，必须保证递归函数能够能正确地退出，否则就会陷入死循环。
 例如下图坐标（0，0）往后搜索时，坐标（0，1）往左搜索就会重复。
+<img src="https://github.com/tiffanyXiaoqing/Identification-of-urban-vegetation-and-rural-vegetation-/blob/master/images/backtracking.jpg" width = "300" height = "200" alt="BeforeFloodFill" align=center />  <img src="https://github.com/tiffanyXiaoqing/Identification-of-urban-vegetation-and-rural-vegetation-/blob/master/images/AfterFloodFill.jpg" width = "300" height = "200" alt="backtracking" align=center />
+<br />
 为了防止陷入死循环，可以设计一个额外数组记录遍历过的位置。为了进一步节省空间，设计使用回溯算法，搜索过的地方设为-1，搜索完之后再填充。
 ### 5.2多线程并行运行 Multithreading
 高分辨率的遥感图像往往有几百兆的大小，比如项目中测试的图片像素大小为8206x6078，142MB，逐个点遍历的速度非常慢。
